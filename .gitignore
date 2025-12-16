@@ -1,0 +1,26 @@
+# Binaries
+/bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Object files
+*.o
+*.obj
+
+# Go workspace
+go.work
+
+# Dependency directories (vendor)
+vendor/
+
+# Environment files
+.env
+
+# Editor settings
+.vscode/
+.idea/
+
+# Logs
+*.log
