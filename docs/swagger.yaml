@@ -1,0 +1,93 @@
+basePath: /
+definitions:
+  interfaces.ScanResult:
+    properties:
+      clean:
+        description: Clean indicates whether the content was found to be clean
+        type: boolean
+      file_name:
+        type: string
+      threat:
+        description: Threat describes the detected threat, if any. Empty when Clean
+          is true
+        type: string
+    type: object
+host: localhost:8084
+info:
+  contact: {}
+  description: Microservice for antivirus scanning
+  title: Sereni Antivirus API
+  version: "1.0"
+paths:
+  /scan:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload a file to scan it for malware using ClamAV
+      parameters:
+      - description: File to scan
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/interfaces.ScanResult'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Scan a file for viruses
+      tags:
+      - antivirus
+  /scan-files:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload multiple files to scan them for malware
+      parameters:
+      - collectionFormat: csv
+        description: Files to scan
+        in: formData
+        items:
+          type: file
+        name: files
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/interfaces.ScanResult'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Scan multiple files for viruses
+      tags:
+      - antivirus
+swagger: "2.0"
