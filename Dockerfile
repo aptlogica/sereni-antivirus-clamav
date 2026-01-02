@@ -16,7 +16,7 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN go build -o server.exe cmd/server/main.go
+RUN go build -o server.exe ./cmd/server
 
 # Prepare optional config directory (always exists, may be empty)
 RUN mkdir -p /app/config && \

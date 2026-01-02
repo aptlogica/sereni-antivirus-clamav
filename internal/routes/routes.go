@@ -12,6 +12,13 @@ import (
 func SetupRouter(scanHandler *handlers.ScanHandler) *gin.Engine {
 	r := gin.Default()
 
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status":  "ok",
+			"service": "antivirus",
+		})
+	})
+
 	r.POST("/scan", scanHandler.ScanFile)
 	r.POST("/scan-files", scanHandler.ScanFiles)
 
