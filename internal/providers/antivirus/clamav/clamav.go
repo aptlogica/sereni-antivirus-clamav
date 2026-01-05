@@ -3,6 +3,7 @@ package clamav
 import (
 	"context"
 	"errors"
+	"fmt"
 	"io"
 
 	"sereni-antivirus/internal/providers/antivirus/interfaces"
@@ -44,7 +45,10 @@ func (p *Provider) Ping(ctx context.Context) error {
 
 // ScanReader scans a stream for malware using clamd INSTREAM.
 func (p *Provider) ScanReader(ctx context.Context, fileName string, r io.Reader) (interfaces.ScanResult, error) {
-	resultChan, err := p.clamd.ScanStream(r, make(chan bool))
+	abort := make(chan bool)
+	defer close(abort)
+
+	resultChan, err := p.clamd.ScanStream(r, abort)
 	if err != nil {
 		return interfaces.ScanResult{
 			FileName: fileName,
@@ -63,18 +67,17 @@ func (p *Provider) ScanReader(ctx context.Context, fileName string, r io.Reader)
 				Threat:   "",
 			}, nil
 		case clamd.RES_FOUND:
-			// infected
 			return interfaces.ScanResult{
 				FileName: fileName,
 				Clean:    false,
 				Threat:   scanResult.Description,
-			}, errors.New("virus detected and infected file: " + fileName + scanResult.Description)
+			}, nil
 		case clamd.RES_ERROR, clamd.RES_PARSE_ERROR:
 			return interfaces.ScanResult{
 				FileName: fileName,
 				Clean:    false,
 				Threat:   scanResult.Description,
-			}, errors.New("clamav scan error on : " + fileName + scanResult.Description)
+			}, fmt.Errorf("clamav scan error on %s: %s", fileName, scanResult.Description)
 		}
 	}
 	// If no result, something went wrong
