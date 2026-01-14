@@ -9,11 +9,12 @@ import (
 )
 
 type ScanHandler struct {
-	service services.AntivirusService
+	service        services.AntivirusService
+	maxUploadBytes int64
 }
 
-func NewScanHandler(service services.AntivirusService) *ScanHandler {
-	return &ScanHandler{service: service}
+func NewScanHandler(service services.AntivirusService, maxUploadBytes int64) *ScanHandler {
+	return &ScanHandler{service: service, maxUploadBytes: maxUploadBytes}
 }
 
 // ScanFile godoc
@@ -28,24 +29,25 @@ func NewScanHandler(service services.AntivirusService) *ScanHandler {
 // @Failure 500 {object} map[string]string
 // @Router /scan [post]
 func (h *ScanHandler) ScanFile(c *gin.Context) {
+	h.limitRequestBody(c)
 	file, header, err := c.Request.FormFile("file")
 	if err != nil {
+		if h.handleBodyTooLargeError(c, err) {
+			return
+		}
 		c.JSON(http.StatusBadRequest, gin.H{"error": "No file uploaded"})
 		return
 	}
 	defer file.Close()
 
 	result, err := h.service.ScanFile(c.Request.Context(), filepath.Base(header.Filename), file)
-
-	// Check if the result indicates a threat, even if an error is returned (as per provider implementation)
-	if !result.Clean && result.Threat != "" {
-		// Malware found
-		c.JSON(http.StatusOK, result)
+	if err != nil && result.Threat == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	if !result.Clean || result.Threat != "" {
+		c.JSON(http.StatusOK, result)
 		return
 	}
 
@@ -64,8 +66,12 @@ func (h *ScanHandler) ScanFile(c *gin.Context) {
 // @Failure 500 {object} map[string]string
 // @Router /scan-files [post]
 func (h *ScanHandler) ScanFiles(c *gin.Context) {
+	h.limitRequestBody(c)
 	form, err := c.MultipartForm()
 	if err != nil {
+		if h.handleBodyTooLargeError(c, err) {
+			return
+		}
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to parse multipart form"})
 		return
 	}
@@ -82,4 +88,19 @@ func (h *ScanHandler) ScanFiles(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, results)
+}
+
+func (h *ScanHandler) limitRequestBody(c *gin.Context) {
+	if h.maxUploadBytes <= 0 {
+		return
+	}
+	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, h.maxUploadBytes)
+}
+
+func (h *ScanHandler) handleBodyTooLargeError(c *gin.Context, err error) bool {
+	if err != nil && err.Error() == "http: request body too large" {
+		c.JSON(http.StatusRequestEntityTooLarge, gin.H{"error": "Request body too large"})
+		return true
+	}
+	return false
 }

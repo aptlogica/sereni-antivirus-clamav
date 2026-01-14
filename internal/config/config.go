@@ -11,6 +11,8 @@ import (
 type Config struct {
 	Port      string
 	Antivirus *AntivirusConfig
+	// MaxUploadSizeBytes caps total request payload (in bytes)
+	MaxUploadSizeBytes int64
 }
 
 type AntivirusConfig struct {
@@ -37,6 +39,7 @@ func Load() (*Config, error) {
 				TimeoutSeconds: getEnvAsInt("CLAMAV_TIMEOUT_SECONDS", 30),
 			},
 		},
+		MaxUploadSizeBytes: int64(getEnvAsInt("MAX_UPLOAD_SIZE_MB", 32)) * 1024 * 1024,
 	}, nil
 }
 

@@ -30,7 +30,7 @@ func main() {
 	avService := services.NewAntivirusService(avProvider)
 
 	// Initialize Handler
-	scanHandler := handlers.NewScanHandler(avService)
+	scanHandler := handlers.NewScanHandler(avService, cfg.MaxUploadSizeBytes)
 
 	// Setup Routes
 	r := routes.SetupRouter(scanHandler)
