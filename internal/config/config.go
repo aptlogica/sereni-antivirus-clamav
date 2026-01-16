@@ -31,27 +31,27 @@ func Load() (*Config, error) {
 	}
 
 	return &Config{
-		Port: getEnv("PORT", "8080"),
+		Port: GetEnv("PORT", "8080"),
 		Antivirus: &AntivirusConfig{
-			Driver: getEnv("ANTIVIRUS_DRIVER", "clamav"),
+			Driver: GetEnv("ANTIVIRUS_DRIVER", "clamav"),
 			ClamAV: ClamAVConfig{
-				Address:        getEnv("CLAMAV_ADDRESS", "127.0.0.1:3310"),
-				TimeoutSeconds: getEnvAsInt("CLAMAV_TIMEOUT_SECONDS", 30),
+				Address:        GetEnv("CLAMAV_ADDRESS", "127.0.0.1:3310"),
+				TimeoutSeconds: GetEnvAsInt("CLAMAV_TIMEOUT_SECONDS", 30),
 			},
 		},
-		MaxUploadSizeBytes: int64(getEnvAsInt("MAX_UPLOAD_SIZE_MB", 32)) * 1024 * 1024,
+		MaxUploadSizeBytes: int64(GetEnvAsInt("MAX_UPLOAD_SIZE_MB", 32)) * 1024 * 1024,
 	}, nil
 }
 
-func getEnv(key, defaultVal string) string {
+func GetEnv(key, defaultVal string) string {
 	if value, exists := os.LookupEnv(key); exists {
 		return value
 	}
 	return defaultVal
 }
 
-func getEnvAsInt(key string, defaultVal int) int {
-	valueStr := getEnv(key, "")
+func GetEnvAsInt(key string, defaultVal int) int {
+	valueStr := GetEnv(key, "")
 	if value, err := strconv.Atoi(valueStr); err == nil {
 		return value
 	}
