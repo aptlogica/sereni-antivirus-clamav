@@ -175,13 +175,13 @@ func TestAntivirusService_ScanFiles(t *testing.T) {
 		{
 			name: "error - one file fails to open",
 			files: []*multipart.FileHeader{
-				func() *multipart.FileHeader {
-					fh := &multipart.FileHeader{Filename: "fail.txt", Size: 0}
-					return fh
-				}(),
+				newMultipartFileHeader(t, "fail.txt", []byte("")),
 			},
 			mockSetup: func(m *mockProvider) {
 				m.ScanReaderFn = func(ctx context.Context, fileName string, r io.Reader) (interfaces.ScanResult, error) {
+					if fileName == "fail.txt" {
+						return interfaces.ScanResult{FileName: fileName, Clean: false, Threat: "Failed to open file: open error"}, fmt.Errorf("fail.txt: open error")
+					}
 					return interfaces.ScanResult{}, nil
 				}
 			},
