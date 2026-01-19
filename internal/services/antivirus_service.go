@@ -44,7 +44,6 @@ func (s *antivirusService) ScanFiles(ctx context.Context, files []*multipart.Fil
 		idx    int
 		header *multipart.FileHeader
 	}
-
 	type scanOutcome struct {
 		idx    int
 		result interfaces.ScanResult
@@ -63,38 +62,15 @@ func (s *antivirusService) ScanFiles(ctx context.Context, files []*multipart.Fil
 	}
 
 	var wg sync.WaitGroup
+	worker := func() {
+		defer wg.Done()
+		for job := range jobCh {
+			outcomeCh <- s.handleScanJob(ctx, job)
+		}
+	}
 	for i := 0; i < workerCount; i++ {
 		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for job := range jobCh {
-				file, err := job.header.Open()
-				if err != nil {
-					outcomeCh <- scanOutcome{
-						idx: job.idx,
-						result: interfaces.ScanResult{
-							FileName: job.header.Filename,
-							Clean:    false,
-							Threat:   "Failed to open file: " + err.Error(),
-						},
-						err: fmt.Errorf("%s: %w", job.header.Filename, err),
-					}
-					continue
-				}
-
-				res, err := s.provider.ScanReader(ctx, job.header.Filename, file)
-				file.Close()
-
-				if err != nil && res.Threat == "" {
-					res.Threat = "scan failed: " + err.Error()
-				}
-				if err != nil {
-					err = fmt.Errorf("%s: %w", job.header.Filename, err)
-				}
-
-				outcomeCh <- scanOutcome{idx: job.idx, result: res, err: err}
-			}
-		}()
+		go worker()
 	}
 
 	go func() {
@@ -108,11 +84,58 @@ func (s *antivirusService) ScanFiles(ctx context.Context, files []*multipart.Fil
 	close(jobCh)
 
 	for outcome := range outcomeCh {
-		if outcome.err != nil {
-			errs = append(errs, outcome.err)
-		}
-		results[outcome.idx] = outcome.result
+		s.handleScanOutcome(&results, &errs, outcome)
 	}
 
 	return results, errors.Join(errs...)
+}
+
+// handleScanJob processes a scanJob and returns a scanOutcome
+func (s *antivirusService) handleScanJob(ctx context.Context, job struct {
+	idx    int
+	header *multipart.FileHeader
+}) struct {
+	idx    int
+	result interfaces.ScanResult
+	err    error
+} {
+	var outcome struct {
+		idx    int
+		result interfaces.ScanResult
+		err    error
+	}
+	outcome.idx = job.idx
+	file, err := job.header.Open()
+	if err != nil {
+		outcome.result = interfaces.ScanResult{
+			FileName: job.header.Filename,
+			Clean:    false,
+			Threat:   "Failed to open file: " + err.Error(),
+		}
+		outcome.err = fmt.Errorf("%s: %w", job.header.Filename, err)
+		return outcome
+	}
+	res, err := s.provider.ScanReader(ctx, job.header.Filename, file)
+	file.Close()
+	if err != nil && res.Threat == "" {
+		res.Threat = "scan failed: " + err.Error()
+	}
+	if err != nil {
+		err = fmt.Errorf("%s: %w", job.header.Filename, err)
+	}
+	outcome.result = res
+	outcome.err = err
+	return outcome
+}
+
+// handleScanOutcome updates results and errs based on scanOutcome
+func (s *antivirusService) handleScanOutcome(results *[]interfaces.ScanResult, errs *[]error, outcome struct {
+	idx    int
+	result interfaces.ScanResult
+	err    error
+}) {
+	if outcome.err != nil {
+		*errs = append(*errs, outcome.err)
+	}
+	(*results)[outcome.idx] = outcome.result
 }

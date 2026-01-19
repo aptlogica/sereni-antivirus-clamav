@@ -29,10 +29,10 @@ func NewScanHandler(service services.AntivirusService, maxUploadBytes int64) *Sc
 // @Failure 500 {object} map[string]string
 // @Router /scan [post]
 func (h *ScanHandler) ScanFile(c *gin.Context) {
-	h.limitRequestBody(c)
+	h.LimitRequestBody(c)
 	file, header, err := c.Request.FormFile("file")
 	if err != nil {
-		if h.handleBodyTooLargeError(c, err) {
+		if h.HandleBodyTooLargeError(c, err) {
 			return
 		}
 		c.JSON(http.StatusBadRequest, gin.H{"error": "No file uploaded"})
@@ -66,10 +66,10 @@ func (h *ScanHandler) ScanFile(c *gin.Context) {
 // @Failure 500 {object} map[string]string
 // @Router /scan-files [post]
 func (h *ScanHandler) ScanFiles(c *gin.Context) {
-	h.limitRequestBody(c)
+	h.LimitRequestBody(c)
 	form, err := c.MultipartForm()
 	if err != nil {
-		if h.handleBodyTooLargeError(c, err) {
+		if h.HandleBodyTooLargeError(c, err) {
 			return
 		}
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to parse multipart form"})
@@ -90,14 +90,14 @@ func (h *ScanHandler) ScanFiles(c *gin.Context) {
 	c.JSON(http.StatusOK, results)
 }
 
-func (h *ScanHandler) limitRequestBody(c *gin.Context) {
+func (h *ScanHandler) LimitRequestBody(c *gin.Context) {
 	if h.maxUploadBytes <= 0 {
 		return
 	}
 	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, h.maxUploadBytes)
 }
 
-func (h *ScanHandler) handleBodyTooLargeError(c *gin.Context, err error) bool {
+func (h *ScanHandler) HandleBodyTooLargeError(c *gin.Context, err error) bool {
 	if err != nil && err.Error() == "http: request body too large" {
 		c.JSON(http.StatusRequestEntityTooLarge, gin.H{"error": "Request body too large"})
 		return true

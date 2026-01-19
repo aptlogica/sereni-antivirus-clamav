@@ -25,13 +25,6 @@ vendor/
 # Logs
 *.log
 
-# Test artifacts
-coverage.out
-coverage.html
-*.coverprofile
-*.test
-*.test.exe
-*_test.go
 
 # Test caches
 testdata/
@@ -40,6 +33,5 @@ testdata/
 *.exe
 *.out
 
-# Reports
-report.md
+
 
