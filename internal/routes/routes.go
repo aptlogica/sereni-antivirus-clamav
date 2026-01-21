@@ -2,6 +2,9 @@
 package routes
 
 import (
+	"fmt"
+	"os"
+
 	_ "sereni-antivirus/docs"
 	"sereni-antivirus/internal/handlers"
 
@@ -17,7 +20,8 @@ func SetupRouter(scanHandler *handlers.ScanHandler) *gin.Engine {
 	r.POST("/scan", scanHandler.ScanFile)
 	r.POST("/scan-files", scanHandler.ScanFiles)
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	url := ginSwagger.URL(fmt.Sprintf("http://%s:%s/swagger/doc.json", os.Getenv("HOST"), os.Getenv("PORT")))
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	return r
 }

@@ -1,12 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"sereni-antivirus/internal/config"
 	"sereni-antivirus/internal/handlers"
 	"sereni-antivirus/internal/providers/antivirus"
 	"sereni-antivirus/internal/routes"
 	"sereni-antivirus/internal/services"
+
+	"sereni-antivirus/docs"
 )
 
 // @title Sereni Antivirus API
@@ -19,6 +22,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
+
+	// Set dynamic host for Swagger
+	docs.SwaggerInfo.Host = fmt.Sprintf("%s:%s", cfg.Host, cfg.Port)
 
 	// Initialize Provider
 	avProvider, err := antivirus.NewAntivirus(cfg.Antivirus)
