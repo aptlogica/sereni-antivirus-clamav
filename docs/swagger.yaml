@@ -3,16 +3,16 @@ definitions:
   interfaces.ScanResult:
     properties:
       clean:
-        description: Clean indicates whether the content was found to be clean
+        description: Clean indicates whether the content was found to be clean.
         type: boolean
       file_name:
         type: string
       threat:
         description: Threat describes the detected threat, if any. Empty when Clean
-          is true
+          is true.
         type: string
     type: object
-host: localhost:8084
+host: ${HOST}:${PORT}
 info:
   contact: {}
   description: Microservice for antivirus scanning

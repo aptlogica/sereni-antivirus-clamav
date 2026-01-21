@@ -12,7 +12,7 @@ import (
 // @title Sereni Antivirus API
 // @version 1.0
 // @description Microservice for antivirus scanning
-// @host localhost:8084
+// @host ${HOST}:${PORT}
 // @BasePath /
 func main() {
 	cfg, err := config.Load()
@@ -35,8 +35,8 @@ func main() {
 	// Setup Routes
 	r := routes.SetupRouter(scanHandler)
 
-	log.Printf("Starting server on port %s", cfg.Port)
-	if err := r.Run(":" + cfg.Port); err != nil {
+	log.Printf("Starting server on %s:%s", cfg.Host, cfg.Port)
+	if err := r.Run(cfg.Host + ":" + cfg.Port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }

@@ -1,3 +1,4 @@
+// Package config provides configuration loading from environment variables.
 package config
 
 import (
@@ -8,29 +9,35 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// Config holds the application configuration loaded from environment variables.
 type Config struct {
+	Host      string
 	Port      string
 	Antivirus *AntivirusConfig
 	// MaxUploadSizeBytes caps total request payload (in bytes)
 	MaxUploadSizeBytes int64
 }
 
+// AntivirusConfig holds antivirus provider settings.
 type AntivirusConfig struct {
 	Driver string
 	ClamAV ClamAVConfig
 }
 
+// ClamAVConfig holds ClamAV-specific configuration.
 type ClamAVConfig struct {
 	Address        string
 	TimeoutSeconds int
 }
 
+// Load reads configuration from environment variables with default fallbacks.
 func Load() (*Config, error) {
 	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found, using defaults")
 	}
 
 	return &Config{
+		Host: GetEnv("HOST", "localhost"),
 		Port: GetEnv("PORT", "8080"),
 		Antivirus: &AntivirusConfig{
 			Driver: GetEnv("ANTIVIRUS_DRIVER", "clamav"),

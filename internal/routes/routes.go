@@ -1,3 +1,4 @@
+// Package routes sets up HTTP routes for the application.
 package routes
 
 import (
@@ -9,6 +10,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// SetupRouter configures and returns the Gin router with all routes.
 func SetupRouter(scanHandler *handlers.ScanHandler) *gin.Engine {
 	r := gin.Default()
 

@@ -1,3 +1,4 @@
+// Package antivirus provides factory functions for creating antivirus providers.
 package antivirus
 
 import (
@@ -9,7 +10,7 @@ import (
 	"sereni-antivirus/internal/providers/antivirus/interfaces"
 )
 
-// NewAntivirus constructs an antivirus provider based on configuration
+// NewAntivirus constructs an antivirus provider based on configuration.
 func NewAntivirus(cfg *config.AntivirusConfig) (interfaces.Provider, error) {
 	switch strings.ToLower(cfg.Driver) {
 	case "clamav":

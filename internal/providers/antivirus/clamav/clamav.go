@@ -1,3 +1,4 @@
+// Package clamav provides antivirus scanning using ClamAV (clamd).
 package clamav
 
 import (
@@ -11,27 +12,27 @@ import (
 	"github.com/dutchcoders/go-clamd"
 )
 
-// ClamdClient interface for testing
+// ClamdClient interface for testing.
 type ClamdClient interface {
 	Ping() error
 	ScanStream(r io.Reader, abort chan bool) (chan *clamd.ScanResult, error)
 }
 
-// Config holds the configuration for the ClamAV provider
+// Config holds the configuration for the ClamAV provider.
 type Config struct {
-	// Address is the host:port of the clamd service, e.g. 127.0.0.1:3310
+	// Address is the host:port of the clamd service, e.g. 127.0.0.1:3310.
 	Address string
-	// TimeoutSeconds is the network timeout for clamd operations
+	// TimeoutSeconds is the network timeout for clamd operations.
 	TimeoutSeconds int
 }
 
-// Provider implements interfaces.Provider for ClamAV (clamd)
+// Provider implements interfaces.Provider for ClamAV (clamd).
 type Provider struct {
 	config Config
 	clamd  ClamdClient
 }
 
-// New creates a new ClamAV antivirus provider instance
+// New creates a new ClamAV antivirus provider instance.
 func New(cfg Config) (*Provider, error) {
 	if cfg.Address == "" {
 		return nil, errors.New("clamav: address is required")
@@ -44,7 +45,7 @@ func New(cfg Config) (*Provider, error) {
 	return &Provider{config: cfg, clamd: c}, nil
 }
 
-// NewWithClient creates a new ClamAV provider with a custom client (for testing)
+// NewWithClient creates a new ClamAV provider with a custom client (for testing).
 func NewWithClient(cfg Config, client ClamdClient) *Provider {
 	return &Provider{config: cfg, clamd: client}
 }
