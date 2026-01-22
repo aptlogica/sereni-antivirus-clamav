@@ -1,3 +1,4 @@
+// Package services provides business logic for antivirus operations.
 package services
 
 import (
@@ -12,6 +13,7 @@ import (
 	"sereni-antivirus/internal/providers/antivirus/interfaces"
 )
 
+// AntivirusService defines methods for scanning files.
 type AntivirusService interface {
 	ScanFile(ctx context.Context, name string, file io.Reader) (interfaces.ScanResult, error)
 	ScanFiles(ctx context.Context, files []*multipart.FileHeader) ([]interfaces.ScanResult, error)
@@ -21,6 +23,7 @@ type antivirusService struct {
 	provider interfaces.Provider
 }
 
+// NewAntivirusService creates a new antivirus service with the given provider.
 func NewAntivirusService(provider interfaces.Provider) AntivirusService {
 	return &antivirusService{
 		provider: provider,

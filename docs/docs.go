@@ -128,14 +128,14 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "clean": {
-                    "description": "Clean indicates whether the content was found to be clean",
+                    "description": "Clean indicates whether the content was found to be clean.",
                     "type": "boolean"
                 },
                 "file_name": {
                     "type": "string"
                 },
                 "threat": {
-                    "description": "Threat describes the detected threat, if any. Empty when Clean is true",
+                    "description": "Threat describes the detected threat, if any. Empty when Clean is true.",
                     "type": "string"
                 }
             }
@@ -146,7 +146,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8084",
+	Host:             "${HOST}:${PORT}",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "Sereni Antivirus API",

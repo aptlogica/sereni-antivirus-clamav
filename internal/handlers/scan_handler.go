@@ -1,3 +1,4 @@
+// Package handlers provides HTTP request handlers for the antivirus service.
 package handlers
 
 import (
@@ -8,11 +9,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// ScanHandler handles antivirus scan requests.
 type ScanHandler struct {
 	service        services.AntivirusService
 	maxUploadBytes int64
 }
 
+// NewScanHandler creates a new scan handler with the given service and upload limit.
 func NewScanHandler(service services.AntivirusService, maxUploadBytes int64) *ScanHandler {
 	return &ScanHandler{service: service, maxUploadBytes: maxUploadBytes}
 }

@@ -1,6 +1,10 @@
+// Package routes sets up HTTP routes for the application.
 package routes
 
 import (
+	"fmt"
+	"os"
+
 	_ "sereni-antivirus/docs"
 	"sereni-antivirus/internal/handlers"
 
@@ -9,13 +13,15 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// SetupRouter configures and returns the Gin router with all routes.
 func SetupRouter(scanHandler *handlers.ScanHandler) *gin.Engine {
 	r := gin.Default()
 
 	r.POST("/scan", scanHandler.ScanFile)
 	r.POST("/scan-files", scanHandler.ScanFiles)
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	url := ginSwagger.URL(fmt.Sprintf("http://%s:%s/swagger/doc.json", os.Getenv("HOST"), os.Getenv("PORT")))
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	return r
 }
