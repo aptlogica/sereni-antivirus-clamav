@@ -38,7 +38,7 @@ func Load() (*Config, error) {
 
 	return &Config{
 		Host: GetEnv("HOST", "localhost"),
-		Port: GetEnv("PORT", "8080"),
+		Port: GetEnv("PORT", "8084"),
 		Antivirus: &AntivirusConfig{
 			Driver: GetEnv("ANTIVIRUS_DRIVER", "clamav"),
 			ClamAV: ClamAVConfig{
