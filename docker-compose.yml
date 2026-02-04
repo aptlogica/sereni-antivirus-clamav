@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  clamav:
+    image: clamav/clamav:latest
+    container_name: clamav
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "3310:3310"   # Expose ClamAV daemon (clamd) port
+    volumes:
+      - ./data:/data   # Optional: mount folder for scanning
+    environment:
+      - CLAMD_STARTUP_TIMEOUT=180
+      - FRESHCLAM_CHECKS=12    # Update virus DB every 2 hours (12/day)
+      - MaxScanSize=500M
+      - MaxFileSize=500M
+      - StreamMaxLength=500M
+      - MaxRecursion=20
+      - MaxFiles=10000
+
+    healthcheck:
+      test: ["CMD", "clamdscan", "--version"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  antivirus-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sereni-antivirus
+    restart: unless-stopped
+    ports:
+      - "8084:8084"
+    env_file:
+      - .env
+    depends_on:
+      clamav:
+        condition: service_healthy

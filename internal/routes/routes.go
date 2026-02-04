@@ -4,10 +4,12 @@ package routes
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	_ "sereni-antivirus/docs"
 	"sereni-antivirus/internal/handlers"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -16,6 +18,22 @@ import (
 // SetupRouter configures and returns the Gin router with all routes.
 func SetupRouter(scanHandler *handlers.ScanHandler) *gin.Engine {
 	r := gin.Default()
+
+	// Configure CORS
+	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
+	if allowedOrigins == "" {
+		allowedOrigins = "*"
+	}
+
+	corsConfig := cors.DefaultConfig()
+	if allowedOrigins == "*" {
+		corsConfig.AllowAllOrigins = true
+	} else {
+		corsConfig.AllowOrigins = strings.Split(allowedOrigins, ",")
+	}
+	corsConfig.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
+	corsConfig.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
+	r.Use(cors.New(corsConfig))
 
 	r.POST("/scan", scanHandler.ScanFile)
 	r.POST("/scan-files", scanHandler.ScanFiles)

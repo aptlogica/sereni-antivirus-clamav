@@ -11,9 +11,10 @@ import (
 
 // Config holds the application configuration loaded from environment variables.
 type Config struct {
-	Host      string
-	Port      string
-	Antivirus *AntivirusConfig
+	Host           string
+	Port           string
+	AllowedOrigins string
+	Antivirus      *AntivirusConfig
 	// MaxUploadSizeBytes caps total request payload (in bytes)
 	MaxUploadSizeBytes int64
 }
@@ -37,8 +38,9 @@ func Load() (*Config, error) {
 	}
 
 	return &Config{
-		Host: GetEnv("HOST", "localhost"),
-		Port: GetEnv("PORT", "8080"),
+		Host:           GetEnv("HOST", "localhost"),
+		Port:           GetEnv("PORT", "8084"),
+		AllowedOrigins: GetEnv("ALLOWED_ORIGINS", "*"),
 		Antivirus: &AntivirusConfig{
 			Driver: GetEnv("ANTIVIRUS_DRIVER", "clamav"),
 			ClamAV: ClamAVConfig{

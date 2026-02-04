@@ -68,8 +68,9 @@ cp .env.example .env
 2. Set environment variables:
    ```bash
    export HOST=localhost
-   export PORT=8080
-   export BASE_URL=http://localhost:8080
+   export PORT=8084
+   export BASE_URL=http://localhost:8084
+   export ALLOWED_ORIGINS=*
    export CLAMAV_ADDRESS=127.0.0.1:3310
    ```
 
@@ -78,7 +79,7 @@ cp .env.example .env
    go run cmd/server/main.go
    ```
 
-The server will start on `localhost:8080`.
+The server will start on `localhost:8084`.
 
 ## API Documentation
 
@@ -111,8 +112,9 @@ curl -X POST ${BASE_URL}/scan \
 | Variable              | Required | Default          | Description |
 |-----------------------|----------|------------------|-------------|
 | HOST                  | No      | localhost       | Server host |
-| PORT                  | No      | 8080            | Server port |
-| BASE_URL              | No      | http://localhost:8080 | Base URL for API |
+| PORT                  | No      | 8084            | Server port |
+| BASE_URL              | No      | http://localhost:8084 | Base URL for API |
+| ALLOWED_ORIGINS       | No      | *               | CORS allowed origins (comma-separated or *) |
 | ANTIVIRUS_DRIVER      | No      | clamav          | Antivirus provider |
 | CLAMAV_ADDRESS        | No      | 127.0.0.1:3310  | ClamAV daemon address |
 | CLAMAV_TIMEOUT_SECONDS| No      | 30              | Scan timeout |

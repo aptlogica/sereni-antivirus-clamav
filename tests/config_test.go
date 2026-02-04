@@ -24,8 +24,8 @@ func TestLoad_Config_Defaults(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	if cfg.Port != "8080" {
-		t.Errorf("expected default port 8080, got %s", cfg.Port)
+	if cfg.Port != "8084" {
+		t.Errorf("expected default port 8084, got %s", cfg.Port)
 	}
 	if cfg.Antivirus.Driver != "clamav" {
 		t.Errorf("expected default antivirus driver clamav, got %s", cfg.Antivirus.Driver)
