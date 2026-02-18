@@ -1,13 +1,13 @@
 mode: set
-sereni-antivirus/internal/config/config.go:34.30,35.40 1 1
-sereni-antivirus/internal/config/config.go:35.40,37.3 1 1
-sereni-antivirus/internal/config/config.go:39.2,50.8 1 1
-sereni-antivirus/internal/config/config.go:53.44,54.48 1 1
-sereni-antivirus/internal/config/config.go:54.48,56.3 1 1
-sereni-antivirus/internal/config/config.go:57.2,57.19 1 1
-sereni-antivirus/internal/config/config.go:60.50,62.54 2 1
-sereni-antivirus/internal/config/config.go:62.54,64.3 1 1
-sereni-antivirus/internal/config/config.go:65.2,65.19 1 1
+sereni-antivirus/internal/config/config.go:35.30,36.40 1 1
+sereni-antivirus/internal/config/config.go:36.40,38.3 1 1
+sereni-antivirus/internal/config/config.go:40.2,52.8 1 1
+sereni-antivirus/internal/config/config.go:55.44,56.48 1 1
+sereni-antivirus/internal/config/config.go:56.48,58.3 1 1
+sereni-antivirus/internal/config/config.go:59.2,59.19 1 1
+sereni-antivirus/internal/config/config.go:62.50,64.54 2 1
+sereni-antivirus/internal/config/config.go:64.54,66.3 1 1
+sereni-antivirus/internal/config/config.go:67.2,67.19 1 1
 sereni-antivirus/internal/handlers/scan_handler.go:19.91,21.2 1 1
 sereni-antivirus/internal/handlers/scan_handler.go:34.48,37.16 3 1
 sereni-antivirus/internal/handlers/scan_handler.go:37.16,38.40 1 1
@@ -51,7 +51,12 @@ sereni-antivirus/internal/providers/antivirus/clamav/clamav.go:74.21,80.10 1 1
 sereni-antivirus/internal/providers/antivirus/clamav/clamav.go:81.24,86.10 1 1
 sereni-antivirus/internal/providers/antivirus/clamav/clamav.go:87.47,92.82 1 1
 sereni-antivirus/internal/providers/antivirus/clamav/clamav.go:96.2,100.51 1 0
-sereni-antivirus/internal/routes/routes.go:14.65,23.2 5 1
+sereni-antivirus/internal/routes/routes.go:19.65,24.26 3 1
+sereni-antivirus/internal/routes/routes.go:24.26,26.3 1 1
+sereni-antivirus/internal/routes/routes.go:28.2,29.27 2 1
+sereni-antivirus/internal/routes/routes.go:29.27,31.3 1 1
+sereni-antivirus/internal/routes/routes.go:31.8,33.3 1 0
+sereni-antivirus/internal/routes/routes.go:34.2,44.10 8 1
 sereni-antivirus/internal/services/antivirus_service.go:27.73,31.2 1 1
 sereni-antivirus/internal/services/antivirus_service.go:33.118,35.2 1 1
 sereni-antivirus/internal/services/antivirus_service.go:37.123,39.16 2 1
