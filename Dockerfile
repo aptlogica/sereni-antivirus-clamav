@@ -19,10 +19,7 @@ RUN go install github.com/swaggo/swag/cmd/swag@latest
 COPY . .
 
 # Generate Swagger documentation and build the application
-RUN swag init -g cmd/server/main.go -o docs && \
-	go mod tidy && \
-	CGO_ENABLED=0 GOOS=linux \
-		go build -o antivirus-service cmd/server/main.go
+RUN swag init -g cmd/server/main.go -o docs && go mod tidy && CGO_ENABLED=0 GOOS=linux go build -o antivirus-service cmd/server/main.go
 
 # Final stage
 FROM alpine:3.20
