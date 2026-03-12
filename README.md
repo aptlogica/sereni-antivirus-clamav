@@ -128,7 +128,7 @@ Deploy in Kubernetes or Docker Swarm for resilient threat detection.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sereni-antivirus-clamav.git
+git clone https://github.com/aptlogica/sereni-antivirus-clamav.git
 cd sereni-antivirus-clamav
 
 # Start services
@@ -146,7 +146,7 @@ The service will be available at `http://localhost:8084` with API documentation 
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/yourusername/sereni-antivirus-clamav.git
+git clone https://github.com/aptlogica/sereni-antivirus-clamav.git
 cd sereni-antivirus-clamav
 
 # 2. Copy environment template
@@ -194,7 +194,7 @@ clamd
 
 ```bash
 # 1. Clone and navigate
-git clone https://github.com/yourusername/sereni-antivirus-clamav.git
+git clone https://github.com/aptlogica/sereni-antivirus-clamav.git
 cd sereni-antivirus-clamav
 
 # 2. Copy environment file
@@ -809,7 +809,7 @@ spec:
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/sereni-antivirus-clamav.git
+git clone https://github.com/aptlogica/sereni-antivirus-clamav.git
 cd sereni-antivirus-clamav
 
 # Install Go (https://golang.org/doc/install)
