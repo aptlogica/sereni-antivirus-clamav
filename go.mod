@@ -1,4 +1,4 @@
-module sereni-antivirus
+module github.com/aptlogica/sereni-antivirus-clamav
 
 go 1.24.4
 
