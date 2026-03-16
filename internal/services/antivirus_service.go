@@ -15,7 +15,7 @@ import (
 	"runtime"
 	"sync"
 
-	"sereni-antivirus/internal/providers/antivirus/interfaces"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/interfaces"
 )
 
 // AntivirusService defines methods for scanning files.

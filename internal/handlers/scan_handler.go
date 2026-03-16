@@ -9,7 +9,7 @@ package handlers
 import (
 	"net/http"
 	"path/filepath"
-	"sereni-antivirus/internal/services"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/services"
 
 	"github.com/gin-gonic/gin"
 )

@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"strings"
 
-	"sereni-antivirus/internal/config"
-	"sereni-antivirus/internal/providers/antivirus/clamav"
-	"sereni-antivirus/internal/providers/antivirus/interfaces"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/clamav"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/interfaces"
 )
 
 // NewAntivirus constructs an antivirus provider based on configuration.

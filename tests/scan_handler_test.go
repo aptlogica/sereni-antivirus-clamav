@@ -15,8 +15,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"sereni-antivirus/internal/handlers"
-	"sereni-antivirus/internal/providers/antivirus/interfaces"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/handlers"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/interfaces"
 
 	"github.com/gin-gonic/gin"
 )

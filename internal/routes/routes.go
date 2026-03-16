@@ -11,8 +11,8 @@ import (
 	"os"
 	"strings"
 
-	_ "sereni-antivirus/docs"
-	"sereni-antivirus/internal/handlers"
+	_ "github.com/aptlogica/sereni-antivirus-clamav/docs"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/handlers"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

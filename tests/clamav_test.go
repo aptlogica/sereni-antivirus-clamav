@@ -11,8 +11,8 @@ import (
 	"strings"
 	"testing"
 
-	"sereni-antivirus/internal/providers/antivirus/clamav"
-	"sereni-antivirus/internal/providers/antivirus/interfaces"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/clamav"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/interfaces"
 
 	"github.com/dutchcoders/go-clamd"
 )

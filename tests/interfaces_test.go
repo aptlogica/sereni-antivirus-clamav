@@ -11,7 +11,7 @@ import (
 	"io"
 	"testing"
 
-	"sereni-antivirus/internal/providers/antivirus/interfaces"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus/interfaces"
 )
 
 type mockProviderInterface struct {

@@ -6,8 +6,8 @@
 package tests
 
 import (
-	"sereni-antivirus/internal/config"
-	"sereni-antivirus/internal/providers/antivirus"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus"
 	"testing"
 )
 
