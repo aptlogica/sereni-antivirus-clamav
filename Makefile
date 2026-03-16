@@ -12,17 +12,19 @@ run:
 	go run $(MAIN_FILE)
 
 test:
-	go test -cover -coverpkg=./internal/... -coverprofile=coverage.out ./tests
+	mkdir -p coverage
+	go test -cover -coverpkg=./internal/... -coverprofile=coverage/coverage.out ./tests
 
 coverage:
-	go tool cover -html=coverage.out
+	go tool cover -html=coverage/coverage.out -o coverage/coverage.html
 
 coverage-func:
-	go tool cover -func=coverage.out
+	go tool cover -func=coverage/coverage.out
 
 clean:
 	go clean
 	rm -f $(APP_NAME)
+	rm -rf coverage
 
 swag:
 	swag init -g $(MAIN_FILE)

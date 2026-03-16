@@ -7,7 +7,7 @@ package tests
 
 import (
 	"os"
-	"sereni-antivirus/internal/config"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
 	"testing"
 )
 

@@ -16,13 +16,13 @@ package main
 import (
 	"fmt"
 	"log"
-	"sereni-antivirus/internal/config"
-	"sereni-antivirus/internal/handlers"
-	"sereni-antivirus/internal/providers/antivirus"
-	"sereni-antivirus/internal/routes"
-	"sereni-antivirus/internal/services"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/handlers"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/routes"
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/services"
 
-	"sereni-antivirus/docs"
+	"github.com/aptlogica/sereni-antivirus-clamav/docs"
 )
 
 // @title Sereni Antivirus API

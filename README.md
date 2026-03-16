@@ -5,11 +5,11 @@
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?style=flat-square&logo=go)](https://golang.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Quality Gate Status](https://sonar.aptlogica.com/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav_4567efab&metric=alert_status&token=sqb_152d71a0f9a3621514372a3e4c87460e3059bbc2)](https://sonar.aptlogica.com/dashboard?id=aptlogica_sereni-antivirus-clamav_4567efab)
+[![Quality Gate Status](https://sonar.aptlogica.com/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286&metric=alert_status&token=sqb_152d71a0f9a3621514372a3e4c87460e3059bbc2)](https://sonar.aptlogica.com/dashboard?id=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286)
 
 ## Overview
 
-**sereni-antivirus-clamav** is an enterprise-grade ClamAV API service and backend security service engineered for comprehensive malware detection and file security. This robust virus scanning backend leverages ClamAV for advanced scanning capabilities, provides secure file upload workflows with file malware detection, and integrates seamlessly with modern cloud-native security infrastructure. Complete developer security service for antivirus file scanning.
+**sereni-antivirus-clamav** is an enterprise-grade ClamAV API service and backend security service engineered for comprehensive malware detection and file security. This robust virus scanning backend leverages ClamAV for advanced scanning capabilities, provides secure file upload workflows with file malware detection, and integrates seamlessly with modern cloud-native security infrastructure, delivering clamav antivirus integration, a file scanning service, and a malware detection service for secure upload pipelines. Complete developer security service for antivirus file scanning.
 
 ## Key Features
 
