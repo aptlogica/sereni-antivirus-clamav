@@ -40,8 +40,6 @@ Thumbs.db
 .env.*.local
 # Logs
 *.log
-# Coverage
-coverage/
 *.lcov
 # Build
 bin/
