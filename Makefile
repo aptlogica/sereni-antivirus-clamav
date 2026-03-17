@@ -1,4 +1,4 @@
-.PHONY: all build run test test-coverage coverage coverage-func clean swag
+.PHONY: help all build run test test-coverage coverage coverage-func clean swag
 
 APP_NAME=server.exe
 MAIN_FILE=cmd/server/main.go
@@ -6,6 +6,17 @@ GO=go
 COVER_DIR=coverage
 COVER_PROFILE=$(COVER_DIR)/coverage.out
 COVER_HTML=$(COVER_DIR)/coverage.html
+
+help: ## Display this help message
+	@echo "Available targets:"
+	@echo "  make build          - Build the application"
+	@echo "  make run            - Run the application"
+	@echo "  make test           - Run all tests"
+	@echo "  make test-coverage  - Run tests with coverage report"
+	@echo "  make coverage       - Alias for test-coverage"
+	@echo "  make coverage-func  - Show coverage by function"
+	@echo "  make clean          - Clean build artifacts"
+	@echo "  make swag           - Generate swagger documentation"
 
 all: build
 
