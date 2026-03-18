@@ -3,9 +3,8 @@
 APP_NAME=server.exe
 MAIN_FILE=cmd/server/main.go
 GO=go
-COVER_DIR=coverage
-COVER_PROFILE=$(COVER_DIR)/coverage.out
-COVER_HTML=$(COVER_DIR)/coverage.html
+COVER_PROFILE=coverage.out
+COVER_HTML=coverage.html
 
 help: ## Display this help message
 	@echo "Available targets:"
@@ -27,8 +26,7 @@ run:
 	$(GO) run $(MAIN_FILE)
 
 test:
-	mkdir -p $(COVER_DIR)
-	$(GO) test -v -race -coverprofile=$(COVER_PROFILE) -covermode=atomic ./...
+	$(GO) test -v -race -coverprofile=$(COVER_PROFILE) -covermode=atomic ./tests/...
 
 test-coverage: test
 	$(GO) tool cover -html=$(COVER_PROFILE) -o $(COVER_HTML)
@@ -41,8 +39,9 @@ coverage-func:
 
 clean:
 	$(GO) clean
-	rm -f $(APP_NAME)
-	rm -rf $(COVER_DIR)
+	-del /Q $(APP_NAME) 2>nul
+	-del /Q $(COVER_PROFILE) 2>nul
+	-del /Q $(COVER_HTML) 2>nul
 
 swag:
 	swag init -g $(MAIN_FILE)
