@@ -26,9 +26,10 @@ run:
 	$(GO) run $(MAIN_FILE)
 
 test:
-	$(GO) test -v -race -coverprofile=$(COVER_PROFILE) -covermode=atomic ./tests/...
+	$(GO) test -v -race ./tests/...
 
-test-coverage: test
+test-coverage:
+	$(GO) test -v -race -coverprofile=$(COVER_PROFILE) -covermode=atomic -coverpkg=./... ./tests/...
 	$(GO) tool cover -html=$(COVER_PROFILE) -o $(COVER_HTML)
 
 coverage:
