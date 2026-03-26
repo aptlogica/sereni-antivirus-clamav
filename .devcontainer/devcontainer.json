@@ -1,0 +1,8 @@
+{
+  "name": "Go Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/go:1.21",
+  "features": {},
+  "settings": {
+    "go.toolsManagement.autoUpdate": true
+  }
+}
