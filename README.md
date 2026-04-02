@@ -9,7 +9,7 @@
 
 ## Overview
 
-**sereni-antivirus-clamav** is an enterprise-grade ClamAV API service and backend security service engineered for comprehensive malware detection and file security. This robust virus scanning backend leverages ClamAV for advanced scanning capabilities, provides secure file upload workflows with file malware detection, and integrates seamlessly with modern cloud-native security infrastructure, delivering clamav antivirus integration, a file scanning service, and a malware detection service for secure upload pipelines. Complete developer security service for antivirus file scanning.
+**Sereni Antivirus ClamAV**  is an open-source antivirus and malware scanning solution built on ClamAV, designed to detect and prevent viruses, ransomware, and other threats across files, applications, and servers. It allows seamless integration into APIs, workflows, and cloud environments, enabling secure file uploads and real-time threat detection with a scalable and cost-effective approach.
 
 ## Key Features
 

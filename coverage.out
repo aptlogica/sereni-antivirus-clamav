@@ -1,5 +1,4 @@
 mode: atomic
-github.com/aptlogica/sereni-antivirus-clamav/docs/docs.go:160.13,162.2 1 1
 github.com/aptlogica/sereni-antivirus-clamav/internal/config/config.go:40.30,41.40 1 2
 github.com/aptlogica/sereni-antivirus-clamav/internal/config/config.go:41.40,43.3 1 2
 github.com/aptlogica/sereni-antivirus-clamav/internal/config/config.go:45.2,57.8 1 2
