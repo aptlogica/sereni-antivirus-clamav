@@ -10,13 +10,14 @@ on:
 
 permissions:
   contents: read
-  security-events: write
 
 jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    permissions:
+      security-events: write
 
     steps:
       - name: Checkout repository
