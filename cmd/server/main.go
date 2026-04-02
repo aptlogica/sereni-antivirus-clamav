@@ -16,6 +16,7 @@ package main
 import (
 	"fmt"
 	"log"
+
 	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
 	"github.com/aptlogica/sereni-antivirus-clamav/internal/handlers"
 	"github.com/aptlogica/sereni-antivirus-clamav/internal/providers/antivirus"
