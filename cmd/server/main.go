@@ -26,16 +26,6 @@ import (
 	"github.com/aptlogica/sereni-antivirus-clamav/docs"
 )
 
-// validateSecrets checks that critical environment variables are set
-func validateSecrets() error {
-	required := []string{"CLAMAV_HOST"}
-	for _, key := range required {
-		if val := config.GetEnv(key, ""); val == "" {
-			return fmt.Errorf("required environment variable %s is not set", key)
-		}
-	}
-	return nil
-}
 
 // @title Sereni Antivirus API
 // @version 1.0
@@ -43,10 +33,6 @@ func validateSecrets() error {
 // @host ${HOST}:${PORT}
 // @BasePath /
 func main() {
-	// Validate required secrets before proceeding
-	if err := validateSecrets(); err != nil {
-		log.Fatalf("Secret validation failed: %v", err)
-	}
 
 	cfg, err := config.Load()
 	if err != nil {
