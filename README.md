@@ -3,7 +3,7 @@
 > Enterprise-grade antivirus microservice and open source antivirus service with ClamAV integration. A comprehensive malware scanning API and backend virus scanner providing advanced file scanning, REST APIs, and seamless integration with modern security infrastructure.
 
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)](LICENSE)
-[![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?style=flat-square&logo=go)](https://golang.org)
+![Go Version](https://img.shields.io/badge/Go-1.26.2-00ADD8?style=flat-square&logo=go)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Quality Gate Status](https://sonar.aptlogica.com/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286&metric=alert_status&token=sqb_152d71a0f9a3621514372a3e4c87460e3059bbc2)](https://sonar.aptlogica.com/dashboard?id=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286)
 
@@ -22,7 +22,7 @@
 - **Cloud-Native Security**: Kubernetes deployment with security best practices
 
 ## Architecture
-- Go 1.23+, idiomatic design
+- Go 1.26.2, idiomatic design
 - Modular, testable codebase
 
 ## Installation
