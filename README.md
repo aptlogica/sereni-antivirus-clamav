@@ -6,6 +6,7 @@
 ![Go Version](https://img.shields.io/badge/Go-1.26.2-00ADD8?style=flat-square&logo=go)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Quality Gate Status](https://sonar.aptlogica.com/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286&metric=alert_status&token=sqb_152d71a0f9a3621514372a3e4c87460e3059bbc2)](https://sonar.aptlogica.com/dashboard?id=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav?ref=badge_shield)
 
 ## Overview
 
@@ -154,3 +155,6 @@ See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
 
 ## License
 MIT License. Copyright (c) 2026 Aptlogica Technologies.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav?ref=badge_large)
