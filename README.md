@@ -1,12 +1,30 @@
-# sereni-antivirus-clamav - Cloud-Native Antivirus Microservice
+<h1 align="center">sereni-antivirus-clamav - Cloud-Native Antivirus Microservice</h1>
 
-> Enterprise-grade antivirus microservice and open source antivirus service with ClamAV integration. A comprehensive malware scanning API and backend virus scanner providing advanced file scanning, REST APIs, and seamless integration with modern security infrastructure.
+<p align="center">Enterprise-grade antivirus microservice and open source antivirus service with ClamAV integration. A comprehensive malware scanning API and backend virus scanner providing advanced file scanning, REST APIs, and seamless integration with modern security infrastructure.</p>
 
-[![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)](LICENSE)
-![Go Version](https://img.shields.io/badge/Go-1.26.2-00ADD8?style=flat-square&logo=go)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Quality Gate Status](https://sonar.aptlogica.com/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286&metric=alert_status&token=sqb_152d71a0f9a3621514372a3e4c87460e3059bbc2)](https://sonar.aptlogica.com/dashboard?id=aptlogica_sereni-antivirus-clamav_642069c8-96f6-4089-8d6c-753fca612286)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav?ref=badge_shield)
+<p align="center">
+<a href="LICENSE"><img src="https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge" alt="Version"></a>
+<a href="https://golang.org"><img src="https://img.shields.io/badge/Go-1.26.2-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go Version"></a>
+<a href="https://www.clamav.net/"><img src="https://img.shields.io/badge/ClamAV-Powered-4B275F?style=for-the-badge&logo=clamav&logoColor=white" alt="ClamAV"></a>
+<a href="https://gin-gonic.com/"><img src="https://img.shields.io/badge/Gin-Framework-008ECF?style=for-the-badge&logo=gin&logoColor=white" alt="Gin"></a>
+<a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"></a>
+<a href="https://swagger.io/"><img src="https://img.shields.io/badge/Swagger-Documented-85EA2D?style=for-the-badge&logo=swagger&logoColor=black" alt="Swagger"></a>
+</p>
+
+<p align="center">
+<a href="https://github.com/aptlogica/sereni-antivirus-clamav/actions/workflows/ci.yml"><img src="https://github.com/aptlogica/sereni-antivirus-clamav/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://github.com/aptlogica/sereni-antivirus-clamav/actions/workflows/codeql.yml"><img src="https://github.com/aptlogica/sereni-antivirus-clamav/actions/workflows/codeql.yml/badge.svg" alt="CodeQL"></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav.svg?type=shield" alt="FOSSA Status"></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav?ref=badge_shield&issueType=security"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav.svg?type=shield&issueType=security" alt="FOSSA Security"></a>
+<a href="https://sonarcloud.io/dashboard?id=aptlogica_sereni-antivirus-clamav"><img src="https://sonarcloud.io/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav&metric=alert_status" alt="Quality Gate"></a>
+<a href="https://sonarcloud.io/dashboard?id=aptlogica_sereni-antivirus-clamav"><img src="https://sonarcloud.io/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav&metric=coverage" alt="Coverage"></a>
+<a href="https://sonarcloud.io/dashboard?id=aptlogica_sereni-antivirus-clamav"><img src="https://sonarcloud.io/api/project_badges/measure?project=aptlogica_sereni-antivirus-clamav&metric=security_rating" alt="Security"></a>
+</p>
+
+<p align="center">
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+</p>
+
 
 ## Overview
 
@@ -155,6 +173,3 @@ See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
 
 ## License
 MIT License. Copyright (c) 2026 Aptlogica Technologies.
-
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Faptlogica%2Fsereni-antivirus-clamav?ref=badge_large)
