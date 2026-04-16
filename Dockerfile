@@ -19,7 +19,7 @@ COPY . .
 RUN go build -o antivirus-service ./cmd/server
 
 # Final stage
-FROM alpine:3.20@sha256:a4f4213abb84c497377b8544c81b3564f313746700372ec4fe84653e4fb03805
+FROM alpine:3.23@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11
 
 # Install ca-certificates for HTTPS
 RUN apk --no-cache add ca-certificates
