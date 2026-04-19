@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   clamav:
-    image: clamav/clamav:latest
+    image: clamav/clamav:1.4.5
     container_name: clamav
     restart: unless-stopped
     env_file:
@@ -10,7 +10,8 @@ services:
     ports:
       - "3310:3310"   # Expose ClamAV daemon (clamd) port
     volumes:
-      - ./data:/data   # Optional: mount folder for scanning
+      - clamav-db:/var/lib/clamav  # Persistent virus signature database (500MB+)
+      - ./data:/data                # Optional: mount folder for scanning
     environment:
       - CLAMD_STARTUP_TIMEOUT=180
       - FRESHCLAM_CHECKS=12    # Update virus DB every 2 hours (12/day)
@@ -40,3 +41,11 @@ services:
     depends_on:
       clamav:
         condition: service_healthy
+
+volumes:
+  clamav-db:
+    driver: local
+    driver_opts:
+      type: local
+      o: bind
+      device: ${CLAMAV_DB_PATH:-./.clamav-db}

@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
 </p>
 
 
@@ -51,6 +51,19 @@ go get github.com/aptlogica/sereni-antivirus-clamav
 
 ## Configuration
 See `.env.example` for environment variables and configuration options.
+
+## Documentation
+
+### Deployment & Operations
+- **[PRODUCTION.md](PRODUCTION.md)** - Production deployment guide with environment configuration, resource constraints, health checks, and persistent volumes
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Cloud deployment guides for Docker Compose, Kubernetes, AWS ECS, Google Cloud Run, and Azure
+
+These documents cover:
+- ✅ Complete environmental variable reference
+- ✅ Resource sizing and constraints (CPU, memory, disk)
+- ✅ Health check mechanisms and monitoring
+- ✅ Persistent volume setup for virus signatures (avoids re-downloading)
+- ✅ Deployment examples for all major platforms
 
 ## Quick Start
 
@@ -172,4 +185,5 @@ curl -X POST -F "file=@eicar.com.txt" http://localhost:8080/scan
 See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
 
 ## License
-MIT License. Copyright (c) 2026 Aptlogica Technologies.
+Apache License 2.0. Copyright (c) 2026 Aptlogica Technologies.
+Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
