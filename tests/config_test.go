@@ -1,4 +1,4 @@
-// Copyright (c) 2026 Aptlogica Technologies Private Limited
+// Copyright 2026-2030 Aptlogica Technologies Pvt Ltd
 // Licensed under the Apache License, Version 2.0
 // Websites: https://www.aptlogica.com | https://www.serenibase.com
 // Support: support@aptlogica.com | support@serenibase.com
@@ -7,8 +7,9 @@ package tests
 
 import (
 	"os"
-	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
 	"testing"
+
+	"github.com/aptlogica/sereni-antivirus-clamav/internal/config"
 )
 
 func TestGetEnv(t *testing.T) {

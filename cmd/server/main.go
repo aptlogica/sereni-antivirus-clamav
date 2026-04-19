@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2026 Aptlogica Technologies Private Limited
+Copyright 2026-2030 Aptlogica Technologies Pvt Ltd
 This file is part of software developed by Aptlogica Technologies Private Limited.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
