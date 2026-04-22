@@ -49,6 +49,9 @@
 go get github.com/aptlogica/sereni-antivirus-clamav
 ```
 
+This service typically runs on port `8084` when deployed as part of the SereniBase backend stack. When used together with the
+`sereni-storage-provider`, files are scanned by this service before being stored. See the full platform at https://github.com/aptlogica/sereni-base for stack deployment examples.
+
 ## Configuration
 See `.env.example` for environment variables and configuration options.
 
@@ -176,6 +179,30 @@ wget https://secure.eicar.org/eicar.com.txt
 
 # Test scanning via API
 curl -X POST -F "file=@eicar.com.txt" http://localhost:8080/scan
+
+## Expected JSON responses
+
+For automated tests and parsing, the service returns a structured JSON response. Example responses:
+
+Infected file response:
+```json
+{
+    "is_clean": false,
+    "threat_name": "Eicar-Signature",
+    "scanned_at": "2026-04-21T10:30:00Z",
+    "file_size": 68
+}
+```
+
+Clean file response:
+```json
+{
+    "is_clean": true,
+    "threat_name": "",
+    "scanned_at": "2026-04-21T10:30:01Z",
+    "file_size": 68
+}
+```
 ```
 
 ## Testing
