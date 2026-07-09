@@ -1,5 +1,5 @@
 # docker/Dockerfile
-FROM golang:1.26.2-alpine@sha256:c2a1f7b2095d046ae14b286b18413a05bb82c9bca9b25fe7ff5efef0f0826166 AS builder
+FROM golang:1.26.5-alpine@sha256:0178a641fbb4858c5f1b48e34bdaabe0350a330a1b1149aabd498d0699ff5fb2 AS builder
 RUN go version
 # Install git (required for go modules)
 RUN apk add --no-cache git
