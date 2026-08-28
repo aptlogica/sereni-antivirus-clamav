@@ -11,6 +11,7 @@ import (
 	"os"
 	"strings"
 
+	// Blank import registers the generated Swagger spec via its init(), so ginSwagger.WrapHandler below can serve it.
 	_ "github.com/aptlogica/sereni-antivirus-clamav/docs"
 	"github.com/aptlogica/sereni-antivirus-clamav/internal/handlers"
 
