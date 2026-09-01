@@ -1,6 +1,6 @@
 module github.com/aptlogica/sereni-antivirus-clamav
 
-go 1.26.2
+go 1.26.5
 
 require (
 	github.com/dutchcoders/go-clamd v0.0.0-20170520113014-b970184f4d9e
