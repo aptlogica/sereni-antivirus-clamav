@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/dutchcoders/go-clamd v0.0.0-20170520113014-b970184f4d9e
-	github.com/gin-contrib/cors v1.7.9
+	github.com/gin-contrib/cors v1.7.10
 	github.com/gin-gonic/gin v1.12.0
 	github.com/joho/godotenv v1.5.1
 	github.com/swaggo/files v1.0.1
