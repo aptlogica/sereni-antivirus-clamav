@@ -1,5 +1,5 @@
 # docker/Dockerfile
-FROM golang:1.27.3-alpine3.24@sha256:b8c9b82affbbb82a020bbcf998dad2ba9516944ac7e883524642a481a9505e9c AS builder
+FROM golang:1.27.3-alpine3.24@sha256:fa3d596898d9f126af7c01d14ee7597bab3f39cccf392ef36b69fe77cd681f18 AS builder
 RUN go version
 # Install git (required for go modules)
 RUN apk add --no-cache git
@@ -19,7 +19,7 @@ COPY . .
 RUN go build -o antivirus-service ./cmd/server
 
 # Final stage
-FROM alpine:3.24@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 
 # Install ca-certificates for HTTPS
 RUN apk --no-cache add ca-certificates
